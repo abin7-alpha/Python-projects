@@ -15,14 +15,6 @@ def main(name, room_no, room_name):
     thread2 = threading.Thread(target=recv_msg, args=())
     thread2.start()
 
-def main1(name, room_no, room_name):
-    client.connect(ADDR)
-    client.sendall(str.encode("\n".join([str(room_no), str(room_name), str(name)])))
-    thread1 = threading.Thread(target=send_msg, args=(name,))
-    thread1.start()
-    thread2 = threading.Thread(target=recv_msg, args=())
-    thread2.start()
-
 def send_msg(name):
     connected = True
     while connected:
@@ -56,7 +48,7 @@ def join_room():
     user_name = input("Your name:")
     room_no = input("Room_no:")
     room_name = input("Room_name:")
-    main1(user_name, room_no, room_name)
+    main(user_name, room_no, room_name)
 
 print("[1.Create Room][2.Join Room]")
 print("Choose wisely")
